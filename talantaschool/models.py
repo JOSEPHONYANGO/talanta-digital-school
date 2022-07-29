@@ -12,15 +12,12 @@ from django.db.models.signals import post_save
 # Create your models here.
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile', null=True)
+    user = models.CharField(User, on_delete=models.CASCADE, related_name='profile', null=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    username =  models.CharField(max_length=100)
-       
+    username =  models.CharField(max_length=100)       
     mobile_number = models.IntegerField(blank=True, null=True)
-    email =  models.CharField(max_length=60) 
-    created_at = models.DateTimeField(auto_now_add=True, null=True)
-    updated_at = models.DateTimeField(auto_now=True, null=True)    
+    email =  models.CharField(max_length=60)       
 
     def __str__(self):
         return f'{self.user.username} profile'
